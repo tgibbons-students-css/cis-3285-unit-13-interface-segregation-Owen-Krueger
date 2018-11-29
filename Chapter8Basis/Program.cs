@@ -27,10 +27,11 @@ namespace Chapter8Basis
 
             Console.WriteLine("=========CreateSingleService=========");
             OrderController sing = CreateSingleService();
+            sing.CreateOrder(order);
+            sing.DeleteOrder(order);
 
             Console.WriteLine("=========GenericController<Order>=========");
             GenericController<Order> generic = CreateGenericServices();
-
 
             Console.WriteLine("Hit any key to quit");
             Console.ReadKey();
