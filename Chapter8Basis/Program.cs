@@ -25,15 +25,25 @@ namespace Chapter8Basis
             item.product = "Amazon Echo";
             item.cost = 99.99;
 
-            Console.WriteLine("=========CreateSeparateServices=========");
-            OrderController sep = CreateSeparateServices();
-            sep.CreateOrder(order);
-            sep.DeleteOrder(order);
+            Console.WriteLine("=========CreateOrderSeparateServices=========");
+            OrderController objectSep = CreateOrderSeparateServices();
+            objectSep.CreateOrder(order);
+            objectSep.DeleteOrder(order);
 
-            Console.WriteLine("=========CreateSingleService=========");
-            OrderController sing = CreateSingleService();
-            sing.CreateOrder(order);
-            sing.DeleteOrder(order);
+            Console.WriteLine("=========CreateOrderSingleService=========");
+            OrderController objectSing = CreateOrderSingleService();
+            objectSing.CreateOrder(order);
+            objectSing.DeleteOrder(order);
+
+            Console.WriteLine("=========CreateItemSeparateServices=========");
+            ItemController itemSep = CreateItemSeparateServices();
+            itemSep.CreateItem(item);
+            itemSep.DeleteItem(item);
+
+            Console.WriteLine("=========CreateItemSingleService=========");
+            ItemController itemSing = CreateItemSingleService();
+            itemSing.CreateItem(item);
+            itemSing.DeleteItem(item);
 
             Console.WriteLine("=========GenericController<Order>=========");
             //Class acts as a factory to create a GenericController of the desired type
@@ -51,7 +61,7 @@ namespace Chapter8Basis
             Console.ReadKey();
         }
 
-        static OrderController CreateSeparateServices()
+        static OrderController CreateOrderSeparateServices()
         {
             var reader = new Reader<Order>();
             var saver = new Saver<Order>();
@@ -59,10 +69,24 @@ namespace Chapter8Basis
             return new OrderController(reader, saver, deleter);
         }
 
-        static OrderController CreateSingleService()
+        static OrderController CreateOrderSingleService()
         {
             var crud = new Crud<Order>();
             return new OrderController(crud, crud, crud);
-        }        
+        }
+
+        static ItemController CreateItemSeparateServices()
+        {
+            var reader = new Reader<Item>();
+            var saver = new Saver<Item>();
+            var deleter = new Deleter<Item>();
+            return new ItemController(reader, saver, deleter);
+        }
+
+        static ItemController CreateItemSingleService()
+        {
+            var crud = new Crud<Item>();
+            return new ItemController(crud, crud, crud);
+        }
     }
 }
