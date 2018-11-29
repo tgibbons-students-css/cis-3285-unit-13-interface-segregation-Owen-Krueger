@@ -12,5 +12,10 @@ namespace Model
         public Guid id { get; set; }
         public string product { get; set; }
         public int amount { get; set; }
+
+        public override string ToString()
+        {
+            return ("ID: " + id + " Product: " + product + " Amount: " + amount);
+        }
     }
 }

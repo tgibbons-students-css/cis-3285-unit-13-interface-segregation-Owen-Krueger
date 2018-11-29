@@ -14,6 +14,11 @@ namespace Chapter8Basis
         static void Main(string[] args)
         {
 
+            Order order = new Order();
+            order.id = Guid.NewGuid();
+            order.product = "Amazon Echo";
+            order.amount = 25;
+            Console.WriteLine(order.ToString());
 
             Console.WriteLine("=========CreateSeparateServices=========");
             OrderController sep = CreateSeparateServices();
