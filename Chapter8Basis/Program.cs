@@ -32,6 +32,7 @@ namespace Chapter8Basis
 
             Console.WriteLine("=========GenericController<Order>=========");
             GenericController<Order> generic = CreateGenericServices();
+            generic.CreateEntity(order);
 
             Console.WriteLine("Hit any key to quit");
             Console.ReadKey();
