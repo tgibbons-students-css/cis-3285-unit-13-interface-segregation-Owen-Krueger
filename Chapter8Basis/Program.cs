@@ -22,6 +22,8 @@ namespace Chapter8Basis
 
             Console.WriteLine("=========CreateSeparateServices=========");
             OrderController sep = CreateSeparateServices();
+            sep.CreateOrder(order);
+            sep.DeleteOrder(order);
 
             Console.WriteLine("=========CreateSingleService=========");
             OrderController sing = CreateSingleService();
